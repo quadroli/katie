@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Hero from './components/Hero';
+import Message from './components/Message';
+import SpyDossier from './components/SpyDossier';
+import RubyConfetti from './components/RubyConfetti';
+import './styles.css';
 
 function App() {
+  const [dossierVisible, setDossierVisible] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RubyConfetti />
+      <Hero />
+      <Message />
+      <div className="spy-icon" onClick={() => setDossierVisible(true)}>
+        🤫
+      </div>
+      <SpyDossier 
+        isVisible={dossierVisible} 
+        onClose={() => setDossierVisible(false)} 
+      />
     </div>
   );
 }
